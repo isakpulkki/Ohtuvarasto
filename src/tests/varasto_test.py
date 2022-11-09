@@ -40,25 +40,25 @@ class TestVarasto(unittest.TestCase):
     def test_varasto_ei_vuoda_yli(self):
         self.varasto.lisaa_varastoon(50)
         self.assertEqual(self.varasto.paljonko_mahtuu(), 0)
-    
+
     def test_varasto_ei_ota_yli_saldon(self):
         self.assertEqual(self.varasto.ota_varastosta(100), 0)
 
     def test_tilavuus_ei_voi_olla_alle_0(self):
         self.varasto = Varasto(-1)
         self.assertEqual(self.varasto.tilavuus, 0)
-    
+
     def test_saldo_ei_voi_olla_alle_0(self):
         self.varasto = Varasto(1, -1)
         self.assertEqual(self.varasto.saldo, 0)
-    
+
     def test_varastoon_ei_voi_lisää_0(self):
         self.assertEqual(self.varasto.lisaa_varastoon(-1), None)
-    
+
     def test_varastosta_ei_voi_ottaa_alle_0(self):
         self.assertEqual(self.varasto.ota_varastosta(-1), 0)
 
     def test_print_varasto(self):
         tuloste = str(self.varasto)
-        self.assertEqual(tuloste, f"saldo = {self.varasto.saldo}, vielä tilaa {self.varasto.paljonko_mahtuu()}" )
-
+        self.assertEqual(
+            tuloste, f"saldo = {self.varasto.saldo}, vielä tilaa {self.varasto.paljonko_mahtuu()}")
